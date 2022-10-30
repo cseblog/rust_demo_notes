@@ -1,0 +1,106 @@
+[package]
+name = "thread_demo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand = "0.8.5"
+socket2 = { version = "0.3.4", features = ["reuseport"] }
+google-gmail1 = "*"
+serde_json = "^1.0"
+
+chrono = "0.4.11"
+imap = "1.0.0"
+itertools = "0.8.0"
+native-tls = "0.2"
+mailparse = "0.13.8"
+substring = "1.4.5"
+regex = "1"
+reqwest = { version = "0.11.11", features = ["json"] }
+serde = { version = "1.0.132", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+
+[[bin]]
+name="string"
+path= "src/string/main.rs"
+
+[[bin]]
+name="gmail"
+path= "src/gmail/gmail_demo.rs"
+
+[[bin]]
+name="demo1"
+path= "src/thread/create_thread.rs"
+
+[[bin]]
+name="demo2"
+path= "src/thread/two_producers_one_consumer.rs"
+
+[[bin]]
+name="demo3"
+path= "src/thread/sync_two_threads.rs"
+
+[[bin]]
+name="tcp_server"
+path="src/networking/tcp/tcp_server.rs"
+
+[[bin]]
+name="tcp_client"
+path="src/networking/tcp/tcp_client.rs"
+
+[[bin]]
+name="fileio"
+path="src/fileio/read_write.rs"
+
+[[bin]]
+name="multicast"
+path= "src/networking/udp/multicast/socket_node.rs"
+
+[[bin]]
+name="multinode"
+path= "src/networking/udp/multicast/socket2_node.rs"
+
+[[bin]]
+name="request"
+path= "src/reqwest/reqwest.rs"
+
+[[bin]]
+name="scope"
+path= "src/scope/main.rs"
+
+[[bin]]
+name="variable"
+path= "src/variable/main.rs"
+
+[[bin]]
+name="unit_test_demo"
+path= "src/unit_test_demo/main.rs"
+
+[[bin]]
+name="if_else"
+path= "src/control_flow/if_else.rs"
+
+[[bin]]
+name="loop"
+path= "src/control_flow/loop.rs"
+
+[[bin]]
+name="match"
+path= "src/control_flow/match.rs"
+
+
+[[bin]]
+name="generic"
+path= "src/oop/generic.rs"
+
+[[bin]]
+name="function_overwrite"
+path= "src/oop/function_overwrite.rs"
+
+[[bin]]
+name="polymorphism"
+path= "src/oop/polymorphism.rs"
+
+[[bin]]
+name="matrix"
+path= "src/matrix/matrix.rs"
