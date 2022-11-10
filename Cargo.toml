@@ -102,5 +102,20 @@ name="polymorphism"
 path= "src/oop/polymorphism.rs"
 
 [[bin]]
+name="composition"
+path= "src/oop/composition.rs"
+
+[[bin]]
 name="matrix"
 path= "src/matrix/matrix.rs"
+
+[[bin]]
+name="2darray"
+path= "src/matrix/2darray.rs"
+
+[[bin]]
+name="const_generic"
+path= "src/const_generic/const_generic.rs"
+[[bin]]
+name="singleton"
+path= "src/patterns/singleton.rs"

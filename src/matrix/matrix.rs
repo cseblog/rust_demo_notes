@@ -1,7 +1,7 @@
-fn update2_2d<V: AsMut<[Row]>, Row: AsMut<[i32]>>(matrix: &mut V) {
+fn update_2_2d<V: AsMut<[Row]>, Row: AsMut<[i32]>>(matrix: &mut V) {
     for row in matrix.as_mut() {
         for cell in row.as_mut() {
-            *cell = 100;
+            *cell = 100; //unsafe action - no recommendation
         }
     }
 }
@@ -15,23 +15,36 @@ fn update_2d<V: AsMut<[i32]>>(matrix: &mut [V]) {
     }
 }
 
-// fn function_3d<V: AsMut<[i32]>, P: AsMut<[V]>>(array: &mut [P]) {
-//     array[1].as_mut()[2].as_mut()[0] = 1;
-// }
+//Using Vector
+fn update_2d_by_vec(array: &mut Vec<Vec<u32>>) {
+    for i in 0..array.len() {
+        for j in 0..array[i].len() {
+            array[i][j] = 200;
+        }
+    }
+}
 
-fn update_arr(arr: &mut [i32; 4]) {
-    arr[0] = 100;
+//Using Constant Generic
+fn update_const_generic<const N: usize>(mat: &mut [[i32; N]; N]) {
+    for i in 0..N {
+        for j in 0..N {
+            mat[i][j] += 10;
+        }
+    }
 }
 
 fn main() {
     let mut zbuffer = [[0; 20]; 20];
-
     println!("before: {:?}", zbuffer);
+    
     update_2d(&mut zbuffer);
     println!("After: {:?}", zbuffer);
 
-    let mut arr = [3, 4, 4, 10];
-    println!("1d array: {:?}", arr);
-    update_arr(&mut arr);
-    println!("1d array: {:?}", arr);
+    let mut array_2d_as_vec = vec![vec![0;20];20];
+    update_2d_by_vec(&mut array_2d_as_vec);
+    println!("{:?}", array_2d_as_vec);
+
+    update_const_generic(&mut zbuffer); 
+    println!("{:?}", zbuffer);
+
 }

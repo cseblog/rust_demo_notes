@@ -1,4 +1,9 @@
+// Polymorphism is feature, one object can be acted by mulitple 
+// of instances
 
+// Polymorphism - Dynamic patch -> trait object: &dyn A
+// Generic -> 
+// Wrapper Enum....
 
 trait Shape {
     fn draw(&self);
@@ -46,6 +51,7 @@ fn main () {
     for i in tools.iter() {
         check(*i)
     }
+
     tools.into_iter().for_each(|f| check(f));
 
 

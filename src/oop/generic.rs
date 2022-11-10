@@ -1,9 +1,4 @@
 use std::{ops::{Add, Sub}, fmt::Display};
-
-
-
-
-
 //Generic Struct
 struct GenericT<T> {
     a: T,
@@ -54,10 +49,8 @@ fn main() {
     add(x, y);
 
     // add2(x, y);
-
-
     let g = GenericT{a: 100, b: 10};
     g.add();
-    let g2 = GenericT{a: 100, b: 222};
+    let g2 = GenericT{a: 100.2, b: 222.33};
     g2.sub()
 }
