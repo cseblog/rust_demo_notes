@@ -116,6 +116,24 @@ path= "src/matrix/2darray.rs"
 [[bin]]
 name="const_generic"
 path= "src/const_generic/const_generic.rs"
+
 [[bin]]
 name="singleton"
 path= "src/patterns/singleton.rs"
+
+[[bin]]
+name="singleton_2"
+path= "src/patterns/singleton_2.rs"
+
+
+[[bin]]
+name="inheritance"
+path= "src/oop/inheritance.rs"
+
+[[bin]]
+name="traitformultiplestruct"
+path= "src/oop/inheritance_use_marker_trait.rs"
+
+[[bin]]
+name="inheritance_macro"
+path= "src/oop/inheritance_use_macro.rs"
