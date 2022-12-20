@@ -1,4 +1,5 @@
 use std::{ops::{Add, Sub}, fmt::Display};
+
 //Generic Struct
 struct GenericT<T> {
     a: T,

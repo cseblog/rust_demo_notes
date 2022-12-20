@@ -19,6 +19,11 @@ regex = "1"
 reqwest = { version = "0.11.11", features = ["json"] }
 serde = { version = "1.0.132", features = ["derive"] }
 tokio = { version = "1", features = ["full"] }
+libc = "0.2.0"
+
+[lib]
+name="adventofcode"
+path="src/adventofcode/lib.rs"
 
 [[bin]]
 name="string"
@@ -88,7 +93,6 @@ path= "src/control_flow/loop.rs"
 name="match"
 path= "src/control_flow/match.rs"
 
-
 [[bin]]
 name="generic"
 path= "src/oop/generic.rs"
@@ -96,10 +100,6 @@ path= "src/oop/generic.rs"
 [[bin]]
 name="function_overwrite"
 path= "src/oop/function_overwrite.rs"
-
-[[bin]]
-name="polymorphism"
-path= "src/oop/polymorphism.rs"
 
 [[bin]]
 name="composition"
@@ -137,3 +137,43 @@ path= "src/oop/inheritance_use_marker_trait.rs"
 [[bin]]
 name="inheritance_macro"
 path= "src/oop/inheritance_use_macro.rs"
+
+[[bin]]
+name="linklist"
+path= "src/patterns/link_list.rs"
+
+[[bin]]
+name="polymorphism_by_box"
+path= "src/oop/polymorphism/dynamic_load_overwriting_trait_object.rs"
+
+[[bin]]
+name="polymorphism"
+path= "src/oop/polymorphism/polymorphism.rs"
+
+[[bin]]
+name="polymorphism_box"
+path= "src/oop/polymorphism/dynamic_load_overwriting_box.rs"
+
+[[bin]]
+name="overload"
+path= "src/oop/polymorphism/static_dispatch_overload.rs"
+
+[[bin]]
+name="ffi_libc"
+path= "src/ffi/calling_c_lib.rs"
+
+[[bin]]
+name="day1"
+path="src/adventofcode/day1.rs"
+
+[[bin]]
+name="day2"
+path="src/adventofcode/day2.rs"
+
+[[bin]]
+name="day3"
+path="src/adventofcode/day3.rs"
+
+[[bin]]
+name="day4"
+path="src/adventofcode/day4.rs"

@@ -41,6 +41,7 @@ fn check(a: &dyn Shape) {
 //Bad things: 
 // - Low performance then generics due to dynamic dispatch
 // - Care about trait safety...etc
+
 fn main () {
     
     let sq = Square{};
@@ -56,10 +57,10 @@ fn main () {
 
 
     // Using box
-    let x:Box<dyn Shape> = Box::new(Square{});
-    let y:Box<dyn Shape> = Box::new(Circle{});
+    let x = Box::new(Square{});
+    let y = Box::new(Circle{});
 
-    let arr: Vec<Box<dyn Shape>> = vec![x, y];
+    let arr: Vec<Box<dyn Shape>>  = vec![x, y];
     arr.into_iter().for_each(|f| {f.draw();});
 
 }

@@ -1,5 +1,4 @@
 struct Character {
-
 }
 
 trait Human {
@@ -7,22 +6,11 @@ trait Human {
     fn fight(&self) -> u32;
 }
 
-
 trait Orc {
     fn fight(&self) ->f32 {
         return 12.33;
     }    
 }
-
-// trait HalfHumanHalfOrc {
-//     fn learn(&self) -> String {
-//         return String::from("Human")
-//     }
-
-//     fn fight(&self) ->f32 {
-//         return 12.33;
-//     }   
-// }
 
 impl Orc for Character {
     fn fight(&self) ->f32 {
@@ -45,6 +33,7 @@ impl Human for Character {
 
 fn main() {
     let orc = Character{};
+    orc.fight();
     Human::fight(&orc);
     Orc::fight(&orc);
     orc.learn();

@@ -74,6 +74,7 @@ fn get_messages_by_query(imap_session: &mut ImapSession, query: String) {
     let result = imap_session.search(query);
     let sequences = result.unwrap();
     let mut count = 1;
+    
     for seq in sequences.iter() {
         let messages = get_message_by_id(seq, seq, imap_session);
         for msg in messages.iter() {

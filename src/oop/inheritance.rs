@@ -1,9 +1,7 @@
-
 trait A {
     fn fa(&self);
     fn fa2(&self);
 }
-
 
 trait B {
     fn fb(&self);
@@ -21,7 +19,6 @@ impl A for C {
     }
 }
 
-
 impl B for C {
     fn fb(&self) {
         println!("This is B, fb");
@@ -31,15 +28,13 @@ impl B for C {
     }
 }
 
-
-
 fn main() {
-    let c = C{};
+    let c = C {};
     c.fa();
     c.fa2();
     c.fb();
-    c.fb2()
+    c.fb2();
 
-
-
+    c.fb2();
+    c.fb2();
 }

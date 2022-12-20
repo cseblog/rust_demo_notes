@@ -45,5 +45,4 @@ fn main() {
     e.fb();
     d.fa();
     d.fb();
-
 }

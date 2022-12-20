@@ -18,6 +18,7 @@ thread_local! {
     static CURRENT_CONFIG: RwLock<Arc<Config>> = RwLock::new(Default::default());
 }
 
+
 fn main() {
     Config { debug_mode: true }.make_current();
     if Config::current().debug_mode {
@@ -25,6 +26,4 @@ fn main() {
     }
 
     let conf = Config{debug_mode: false};
-    
-    //
 }

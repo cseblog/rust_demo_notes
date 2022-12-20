@@ -36,8 +36,10 @@ fn main() {
     let c = C{};
     c.fa();
     c.fb();
+    (&c)
 
+    
     let e = E{};
     e.fa();
-    e.fb()
+    e.fb();
 }
