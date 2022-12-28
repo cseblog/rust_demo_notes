@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+text_io = "0.1.12"
 rand = "0.8.5"
 socket2 = { version = "0.3.4", features = ["reuseport"] }
 google-gmail1 = "*"
@@ -114,6 +115,10 @@ name="2darray"
 path= "src/matrix/2darray.rs"
 
 [[bin]]
+name="vec_vec"
+path= "src/matrix/vec_vec.rs"
+
+[[bin]]
 name="const_generic"
 path= "src/const_generic/const_generic.rs"
 
@@ -177,3 +182,23 @@ path="src/adventofcode/day3.rs"
 [[bin]]
 name="day4"
 path="src/adventofcode/day4.rs"
+
+[[bin]]
+name="day5"
+path="src/adventofcode/day5.rs"
+
+[[bin]]
+name="vector_demo"
+path="src/collections/vector_demo.rs"
+
+[[bin]]
+name="day6"
+path="src/adventofcode/day6.rs"
+
+[[bin]]
+name="day7"
+path="src/adventofcode/day7.rs"
+
+[[bin]]
+name="day8"
+path="src/adventofcode/day8.rs"
