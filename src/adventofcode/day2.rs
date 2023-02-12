@@ -122,6 +122,6 @@ mod test {
     #[test]
     fn test() -> Result<(), String> {
         let _t = resolve("xx".to_string())?;
-        return Ok(())
+        return Ok(());
     }
 }

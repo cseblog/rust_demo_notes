@@ -1,12 +1,18 @@
 fn main() {
-
     let mut v = update_vec();
     
     let item = v[0].get(v[0].len()-1).clone();
     v[0].pop();
     v[0].push("sample".to_string());
     println!("{:?}", v[0]);
+
+    //
+    (0..0).rev().for_each(|e| {
+        println!("{}", e);
+    })
+
 }
+
 
 fn update_vec() -> Vec<Vec<String>> {
     let mut vec: Vec<Vec<String>> = Vec::new();

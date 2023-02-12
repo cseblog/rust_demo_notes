@@ -202,3 +202,7 @@ path="src/adventofcode/day7.rs"
 [[bin]]
 name="day8"
 path="src/adventofcode/day8.rs"
+
+[[bin]]
+name="day9"
+path="src/adventofcode/day9.rs"

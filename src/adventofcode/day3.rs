@@ -97,19 +97,19 @@ fn get_total(list: Vec<u8>) -> u32 {
 #[cfg(test)]
 mod test {
     use super::*;
-    
+
     #[test]
     fn test_get_total() {
         let list = vec!['a' as u8];
         assert_eq!(1, get_total(list));
     }
-    
+
     #[test]
     fn test_get_total_2() {
         let list = vec!['a' as u8, 'z' as u8];
         assert_eq!(27, get_total(list));
     }
-    
+
     #[test]
     fn test_get_total_3() {
         let list = vec!['A' as u8, 'z' as u8];

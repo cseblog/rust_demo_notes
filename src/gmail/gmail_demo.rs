@@ -1,20 +1,19 @@
+extern crate chrono;
 extern crate imap;
 extern crate native_tls;
-extern crate chrono;
 
-use std::str::from_utf8;
 use mailparse::*;
+use std::str::from_utf8;
 use substring::Substring;
 
+use imap::types::Seq;
 use regex::Regex;
 use std::ptr::addr_of_mut;
 use std::thread::sleep;
 use std::time::{Duration, Instant};
-use imap::types::Seq;
 
 type ImapSession = imap::Session<native_tls::TlsStream<std::net::TcpStream>>;
 type DateTime = chrono::DateTime<chrono::offset::FixedOffset>;
-
 
 #[derive(Debug)]
 struct Message {
@@ -26,7 +25,7 @@ struct Payment {
     name: String,
     amount: String,
     method: String,
-    time: String
+    time: String,
 }
 
 fn get_amount(payment_message: &String) -> String {
@@ -38,7 +37,7 @@ fn get_amount(payment_message: &String) -> String {
     return amount;
 }
 
-fn get_time(payment_message: &String) ->String {
+fn get_time(payment_message: &String) -> String {
     let time_regex = Regex::new("on.\\d.*T\\)").unwrap();
     let time = String::from(time_regex.find(&payment_message).unwrap().as_str())
         .replace("on", "")
@@ -46,10 +45,11 @@ fn get_time(payment_message: &String) ->String {
     return time;
 }
 
-fn get_name(payment_message: &String) ->String {
+fn get_name(payment_message: &String) -> String {
     let name_regex = Regex::new("from.*to").unwrap();
     let name = String::from(name_regex.find(&payment_message).unwrap().as_str())
-        .replace("from", "").replace("to", "");
+        .replace("from", "")
+        .replace("to", "");
     return name;
 }
 
@@ -74,7 +74,7 @@ fn get_messages_by_query(imap_session: &mut ImapSession, query: String) {
     let result = imap_session.search(query);
     let sequences = result.unwrap();
     let mut count = 1;
-    
+
     for seq in sequences.iter() {
         let messages = get_message_by_id(seq, seq, imap_session);
         for msg in messages.iter() {
@@ -82,7 +82,10 @@ fn get_messages_by_query(imap_session: &mut ImapSession, query: String) {
             let subject = email.headers.get_first_value("Subject").unwrap();
             let body_string = email.subparts[0].get_body().unwrap();
             let payment = get_payment_from_body(body_string);
-            println!("{}: {}, {}$, {}, {}", count, payment.name, payment.amount, payment.time, payment.method );
+            println!(
+                "{}: {}, {}$, {}, {}",
+                count, payment.name, payment.amount, payment.time, payment.method
+            );
             count = count + 1;
         }
     }
@@ -91,15 +94,16 @@ fn get_messages_by_query(imap_session: &mut ImapSession, query: String) {
 fn get_message_by_id(from: &Seq, to: &Seq, imap_session: &mut ImapSession) -> Vec<Message> {
     let result = imap_session.fetch(format!("{}:{}", from, to), "(UID RFC822)");
     if let Ok(messages) = result {
-        return messages.iter().map(|message|
-            Message {
+        return messages
+            .iter()
+            .map(|message| Message {
                 uid: message.uid.unwrap(),
                 body: message
                     .body()
                     .map(|x| x.into_iter().map(|&x| x).collect())
                     .unwrap(),
-            }
-        ).collect::<Vec<_>>();
+            })
+            .collect::<Vec<_>>();
     }
     vec![]
 }
@@ -108,11 +112,7 @@ fn get_message_by_id(from: &Seq, to: &Seq, imap_session: &mut ImapSession) -> Ve
 //TODO: Create Password Manager
 fn main() {
     let tls = native_tls::TlsConnector::builder().build().unwrap();
-    let client = imap::connect(
-        ("imap.gmail.com", 993),
-        "imap.gmail.com",
-        &tls,
-    ).unwrap();
+    let client = imap::connect(("imap.gmail.com", 993), "imap.gmail.com", &tls).unwrap();
 
     let username = std::env::var("USERNAME").unwrap();
     let password = std::env::var("PASSWORD").unwrap();
@@ -124,6 +124,9 @@ fn main() {
     let before_date = "8-JUL-2022";
     let from_email = "ibanking.alert@dbs.com";
     let subject = "Transaction Alerts";
-    let query = format!("FROM \"{}\" SUBJECT \"{}\" SINCE \"{}\" BEFORE \"{}\"", from_email, subject, from_date, before_date);
+    let query = format!(
+        "FROM \"{}\" SUBJECT \"{}\" SINCE \"{}\" BEFORE \"{}\"",
+        from_email, subject, from_date, before_date
+    );
     get_messages_by_query(&mut imap_session, query);
 }
